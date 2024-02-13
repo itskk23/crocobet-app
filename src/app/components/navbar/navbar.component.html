@@ -1,0 +1,31 @@
+<aside>
+  <a routerLink="/" class="navbar-logo">
+    <img ngSrc="/assets/icons/cb_logo.svg" priority alt="Crocobet Logo" width="59" height="46">
+  </a>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/pageSport" routerLinkActive="active">
+          <app-icons [name]="'sport'"></app-icons>
+          <span>SPORT</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/pageLive" routerLinkActive="active">
+          <app-icons [name]="'live'"></app-icons>
+          <span>LIVE</span>
+        </a>
+      </li>
+      <li><a routerLink="/slots" routerLinkActive="active">
+          <app-icons [name]="'slots'"></app-icons>
+          <span>SLOTS</span>
+        </a>
+      </li>
+      <li><a routerLink="/pageCasino" routerLinkActive="active">
+          <app-icons [name]="'casino'"></app-icons>
+          <span>CASINO</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>

@@ -1,0 +1,10 @@
+<div class="category-wrapper">
+    @for (category of slotService.categorySlotData(); track category.totalGames) {
+    <button (click)="chooseCategory(category.category)" [attr.data-order]="category.totalGames"
+           [class.active]="activeCategory === category.category && slotService.activeFilter() === FilterEnum.Category">
+     <img src="/assets/icons/{{category.icon}}.svg" [alt]="category.name">
+     <span>{{ category.name }}</span>
+   </button>
+    }
+</div>
+

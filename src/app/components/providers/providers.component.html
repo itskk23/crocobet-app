@@ -1,0 +1,24 @@
+<div class="providers-container">
+  <button class="open" (click)="openState = !openState">
+    @if (!openState) {
+    <span>See More</span>
+    } @else {
+    <span>See Less</span>
+    }
+    <svg width="13" height="9" viewBox="0 0 13 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M6.13815 8.11499C6.02663 8.1151 5.91618 8.08981 5.81314 8.04056C5.7101 7.99131 5.6165 7.91907 5.5377 7.82799L0.321648 1.80799C0.162398 1.62406 0.0729779 1.37465 0.0730591 1.11463C0.0731404 0.854613 0.162716 0.605281 0.322081 0.421486C0.481446 0.237691 0.697545 0.134489 0.92284 0.134583C1.14813 0.134676 1.36417 0.238059 1.52342 0.421986L6.13815 5.74799L10.7529 0.421986C10.8318 0.33098 10.9255 0.258803 11.0285 0.209576C11.1316 0.160349 11.2421 0.135036 11.3536 0.135083C11.4652 0.135129 11.5757 0.160534 11.6787 0.209847C11.7818 0.259159 11.8754 0.331415 11.9542 0.422486C12.0331 0.513558 12.0956 0.621663 12.1383 0.740629C12.1809 0.859595 12.2029 0.987091 12.2028 1.11584C12.2028 1.24459 12.1808 1.37207 12.138 1.491C12.0953 1.60993 12.0327 1.71798 11.9538 1.80899L6.73774 7.82899C6.65897 7.91977 6.56548 7.99176 6.4626 8.04083C6.35972 8.08991 6.24947 8.1151 6.13815 8.11499Z"
+        fill="#189541" />
+    </svg>
+  </button>
+  <div class="providers-wrapper" [class.open]="openState">
+    @for (provider of providers$ | async; track provider._id) {
+    <button (click)='chooseProvider(provider.provider)'
+      [class.active]="activeProvider == provider.provider && slots$.activeFilter() === FilterEnum.Provider">
+      <span>
+        {{ provider.name }}
+      </span>
+    </button>
+    }
+  </div>
+</div>

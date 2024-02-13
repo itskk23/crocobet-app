@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'NeueCrocoSans';
+  src: url("/assets/fonts/NeueCrocoSansRegular.woff") format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NeueCrocoSansMedium';
+  src: url("/assets/fonts/NeueCrocoSansMedium.woff") format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TTSupermolotNeue-ExtraBold';
+  src: url("/assets/fonts/TTSupermolotNeue-ExtraBold.woff") format('woff');
+  font-display: swap;
+}
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'NeueCrocoSansMedium', sans-serif;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    min-height: 100%;
+    line-height: 1;
+    background-color: #1a1e23
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  

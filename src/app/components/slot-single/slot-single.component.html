@@ -1,0 +1,15 @@
+<div class="slot-single">
+    <img [src]="url" width="216" height="140" [alt]="name">
+    <div class="slot-title">
+      <span>{{ name }}</span>
+    </div>
+    <button class="play-slot">Play</button>
+    @if (tags.length) {
+     <div class="tags-wrapper">
+       @for (tag of tags; track tag) {
+    <span class="tag">{{ tag }}</span>
+      }
+    </div>
+    }
+  </div>
+  

@@ -1,0 +1,10 @@
+<div class="slot-wrapper">
+    @for (slot of slotService.filteredSlots(); track slot.name) {
+    @if(slot) {
+    <app-slot-single
+    [name]=slot.name
+    [url]=slot.image
+    [tags]=slot.tags
+    ></app-slot-single>
+    }}
+    </div>
