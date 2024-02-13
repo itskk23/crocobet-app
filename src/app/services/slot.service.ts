@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Observable, map, tap } from 'rxjs';
-import { CategoryIcons, CategoryList, CategoryNameList, FilterEnum } from '../enums/categories.enum';
-import { ISlotModel, ProviderSlotsModel, SlotModel, SlotModelArray, SlotTypeModel } from '../models/slot.model';
+import { CategoryIcons, CategoryNameList, FilterEnum } from '../enums/categories.enum';
+import { ISlotModel, ProviderSlotsModel, ProvidersModel, SlotModel, SlotModelArray, SlotTypeModel } from '../models/slot.model';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +10,8 @@ import { ISlotModel, ProviderSlotsModel, SlotModel, SlotModelArray, SlotTypeMode
 export class SlotService {
   url1 = 'https://cms.crocobet.com/integrations/v2/slot/categories';
   url2 = 'https://cms.crocobet.com/integrations/v2/slot/providers';
+  url3 = 'https://cms.crocobet.com/integrations';
+
   categorySlotData: WritableSignal<SlotTypeModel[]> = signal([]);
   filteredSlots: WritableSignal<ISlotModel[]> = signal([]);
   activeFilter: WritableSignal<FilterEnum> = signal(FilterEnum.Category);
@@ -22,13 +24,10 @@ export class SlotService {
         map((result: any) => {
           return result.data.filter((result) => {
               return (
-                result.category == CategoryList.WebPopular ||
-                result.category == CategoryList.Favorites ||
-                result.category == CategoryList.NewGames ||
-                result.category == CategoryList.BuyBonus ||
-                result.category == CategoryList.History
-              );
-            }).map((data: any) => {
+                result.category == 'web:popular' || result.category == 'Web|Mob:search' ||
+                result.category == 'web:new_games' || result.category == 'web:buy_bonus' ||
+                result.category == 'web:new_provider'
+              )}).map((data: any) => {
               console.log('data gaifiltra?', data)
               return {
                 ...data,
@@ -58,5 +57,12 @@ export class SlotService {
           this.filteredSlots.set(slots);
         })
       );
+  }
+
+  getAllProviders(): Observable<ProvidersModel> {
+    const params = new HttpParams()
+      .append('type', 'slot')
+      .append('platform', 'desktop');
+    return this.http.get<ProvidersModel>(this.url3, { params });
   }
 }

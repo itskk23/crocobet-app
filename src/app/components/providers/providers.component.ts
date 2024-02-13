@@ -4,7 +4,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, take } from 'rxjs';
 import { FilterEnum } from '../../enums/categories.enum';
-import { ProviderService } from '../../services/provider.service';
 import { SlotService } from '../../services/slot.service';
 
 
@@ -16,10 +15,10 @@ import { SlotService } from '../../services/slot.service';
   styleUrl: './providers.component.scss'
 })
 export class ProvidersComponent implements OnInit {
-  slots$ = inject(SlotService);
-  providers$ = inject(ProviderService).getAllProviders().pipe(map((result) => result.data));
+  providers$ = inject(SlotService).getAllProviders().pipe(map((result) => result.data));
   providerList = toSignal(this.providers$);
-  openState = false;
+  slots$ = inject(SlotService);
+  openState:boolean = false;
   activeProvider: string;
   FilterEnum = FilterEnum;
   constructor(
