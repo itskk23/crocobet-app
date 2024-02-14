@@ -29,7 +29,6 @@ export class ProvidersComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('rato ar shemodis');
     this.generateSlots();
   }
 

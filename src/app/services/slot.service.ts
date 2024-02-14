@@ -28,7 +28,6 @@ export class SlotService {
                 result.category == 'web:new_games' || result.category == 'web:buy_bonus' ||
                 result.category == 'web:new_provider'
               )}).map((data: any) => {
-              console.log('data gaifiltra?', data)
               return {
                 ...data,
                 name: CategoryNameList[data.category as keyof typeof CategoryNameList],
@@ -37,7 +36,8 @@ export class SlotService {
             });
         }),
         tap((res) => {
-          this.categorySlotData.set(res)
+          console.log('show me', res);
+          this.categorySlotData.set(res);
         })
       );
   }

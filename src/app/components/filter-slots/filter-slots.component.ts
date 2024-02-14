@@ -45,7 +45,6 @@ export class FilterSlotsComponent implements OnInit {
     this.router.navigate([], { queryParams: { cat } }).then(() => {
       const gameData = this.slotService.categorySlotData().find((data) => data.category === cat);
       if (gameData) {
-        console.log('aba', gameData);
         this.slotService.filteredSlots.set(gameData.games);
         this.activeCategory = cat;
         this.slotService.activeFilter.set(FilterEnum.Category);
